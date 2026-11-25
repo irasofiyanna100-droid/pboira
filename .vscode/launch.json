@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Run Koperasi App",
+            "request": "launch",
+            "mainClass": "koperasi.ui.Login",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "KOPERASI_DB_URL": "jdbc:mysql://localhost:3306/koperasi_db?serverTimezone=UTC",
+                "KOPERASI_DB_USER": "root",
+                "KOPERASI_DB_PASSWORD": ""
+            }
+        }
+    ]
+}

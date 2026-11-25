@@ -1,0 +1,81 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+actor Admin
+actor Petugas
+actor Anggota
+
+rectangle "Sistem Informasi Koperasi Simpan Pinjam" {
+  usecase "Login" as UC_Login
+  usecase "Logout" as UC_Logout
+
+  usecase "Mengelola data anggota" as UC_Members
+  usecase "Memverifikasi pendaftaran anggota" as UC_Verify
+  usecase "Memeriksa bukti pembayaran" as UC_Proof
+  usecase "Mengelola data petugas" as UC_Staff
+  usecase "Melihat data simpanan" as UC_Savings
+  usecase "Menyetujui / menolak pinjaman" as UC_DecideLoan
+  usecase "Mengelola angsuran" as UC_Installments
+  usecase "Mengelola laporan" as UC_Reports
+  usecase "Mengelola pengguna" as UC_Users
+  usecase "Mengatur sistem" as UC_Settings
+
+  usecase "Melihat data anggota" as UC_ViewMembers
+  usecase "Membantu pendaftaran anggota" as UC_AssistRegistration
+  usecase "Mencatat simpanan" as UC_RecordSavings
+  usecase "Menarik simpanan sukarela" as UC_Withdraw
+  usecase "Mencairkan pinjaman disetujui" as UC_Disburse
+  usecase "Memvalidasi persetujuan pinjaman" as UC_ValidateApproval
+  usecase "Mencatat pembayaran angsuran" as UC_Pay
+  usecase "Memperbarui sisa pinjaman" as UC_UpdateBalance
+  usecase "Melihat riwayat transaksi" as UC_History
+  usecase "Mencetak bukti transaksi" as UC_Receipt
+
+  usecase "Registrasi" as UC_Register
+  usecase "Melihat profil" as UC_Profile
+  usecase "Melihat simpanan" as UC_MySavings
+  usecase "Mengajukan pinjaman" as UC_ApplyLoan
+  usecase "Melihat status pinjaman" as UC_LoanStatus
+  usecase "Melihat informasi angsuran" as UC_MyInstallments
+  usecase "Melihat notifikasi" as UC_Notifications
+}
+
+Admin -- UC_Login
+Admin -- UC_Members
+Admin -- UC_Verify
+Admin -- UC_Staff
+Admin -- UC_Savings
+Admin -- UC_DecideLoan
+Admin -- UC_Installments
+Admin -- UC_Reports
+Admin -- UC_Users
+Admin -- UC_Settings
+Admin -- UC_Logout
+
+Petugas -- UC_Login
+Petugas -- UC_ViewMembers
+Petugas -- UC_AssistRegistration
+Petugas -- UC_RecordSavings
+Petugas -- UC_Withdraw
+Petugas -- UC_Disburse
+Petugas -- UC_Pay
+Petugas -- UC_History
+Petugas -- UC_Receipt
+Petugas -- UC_Logout
+
+Anggota -- UC_Register
+Anggota -- UC_Login
+Anggota -- UC_Profile
+Anggota -- UC_MySavings
+Anggota -- UC_ApplyLoan
+Anggota -- UC_LoanStatus
+Anggota -- UC_MyInstallments
+Anggota -- UC_Notifications
+Anggota -- UC_Logout
+
+UC_Verify ..> UC_Proof : <<include>>
+UC_Disburse ..> UC_ValidateApproval : <<include>>
+UC_Pay ..> UC_UpdateBalance : <<include>>
+@enduml
